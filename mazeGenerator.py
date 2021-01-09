@@ -3,8 +3,8 @@ from collections import deque
 import random
 import time
 
-ROWS = 50
-SIZE = 1000
+ROWS = 30
+SIZE = 1200
 WIN = pygame.display.set_mode((SIZE + 2, SIZE + 2))
 pygame.display.set_caption("Maze generator")
 
@@ -196,6 +196,10 @@ def main(win):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_SPACE:
+                    squares = make_grid(ROWS, SIZE)
+                    squares = calculate_walls(squares)
 
         draw(win, squares, ROWS, SIZE)
 
